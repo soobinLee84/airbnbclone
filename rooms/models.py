@@ -11,6 +11,7 @@ class Room(CommonModel):
         PRIVATE_ROOM = ("private_room", "Privatge Room")
         SHARED_ROOM = ("shared_room", "Shared Room")
 
+    name = models.CharField(max_length=180, default="")
     country = models.CharField(
         max_length=50,
         default="한국",
@@ -37,9 +38,24 @@ class Room(CommonModel):
         "rooms.Amenity",
     )
 
+    def __str__(self):
+        return str(self.name)
+
 
 class Amenity(CommonModel):
     """Amenity Definition"""
 
     name = models.CharField(max_length=150)
-    description = models.CharField(max_length=150, null=True)
+    # blank = True 는 django form 에서의 공백
+    # null = True 는 데이터베이스에서의 공백
+    description = models.CharField(
+        max_length=150,
+        null=True,
+        blank=True,
+    )
+
+    def __str__(self):
+        return str(self.name)
+
+    class Meta:
+        verbose_name_plural = "Amenities"
