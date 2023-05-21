@@ -30,9 +30,12 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-CUSTOM_APPS = ["houses.apps.HousesConfig",]
 
-SYSTEM_APPS = ["django.contrib.admin",
+
+
+CUSTOM_APPS = ["users.apps.UsersConfig"]
+SYSTEM_APPS = [
+    "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
@@ -41,6 +44,8 @@ SYSTEM_APPS = ["django.contrib.admin",
 
     
 INSTALLED_APPS =  SYSTEM_APPS + CUSTOM_APPS
+
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -51,6 +56,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
 
 ROOT_URLCONF = "config.urls"
 
@@ -124,3 +130,6 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Auth
+AUTH_USER_MODEL = "users.User"
