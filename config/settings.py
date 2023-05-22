@@ -30,6 +30,15 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+
+CUSTOM_APPS = [
+    "common.apps.CommonConfig",
+    "users.apps.UsersConfig",
+    "rooms.apps.RoomsConfig",
+    "experiences.apps.ExperiencesConfig",
+    "categories.apps.CategoriesConfig",
+    "reviews.apps.ReviewsConfig",
+]
 SYSTEM_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -40,9 +49,8 @@ SYSTEM_APPS = [
 ]
 
 
-CUSTOM_APPS = ["houses.apps.HousesConfig", "users.apps.UsersConfig"]
-
 INSTALLED_APPS = SYSTEM_APPS + CUSTOM_APPS
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
