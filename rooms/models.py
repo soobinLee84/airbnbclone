@@ -53,8 +53,19 @@ class Room(CommonModel):
     def __str__(self):
         return str(self.name)
 
-    def total_amenities(self):
-        return self.amenities.count()
+    def total_amenities(room):
+        return room.amenities.count()
+
+    # reviews의 모델을 보면 room과연결되어있다 reviews는 related name 이다
+    def rating(room):
+        count = room.reviews.count()
+        if count == 0:
+            return "No Reviews"
+        else:
+            total_rating = 0
+            for review in room.reviews.all().values("rating"):
+                total_rating += review["rating"]
+            return round(total_rating / count, 2)
 
 
 class Amenity(CommonModel):

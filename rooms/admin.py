@@ -7,6 +7,7 @@ class RoomAdmin(admin.ModelAdmin):
     list_display = (
         "name",
         "price",
+        "rating",
         "kind",
         "total_amenities",
         "owner",
@@ -20,6 +21,12 @@ class RoomAdmin(admin.ModelAdmin):
         "pet_friendly",
         "kind",
         "amenities",
+    )
+
+    search_fields = (
+        "name",
+        "price",
+        "owner__username",
     )
 
 
